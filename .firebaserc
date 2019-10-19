@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "staging": "costom-assistant",
+    "default": "costom-assistant"
+  }
+}

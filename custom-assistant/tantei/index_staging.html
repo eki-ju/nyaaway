@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Custom Assistant</title>
+    <link rel="stylesheet" href="https://jenil.github.io/bulmaswatch/darkly/bulmaswatch.min.css">
+<!--
+    <link rel="stylesheet" href="./css/style.css">
+  -->
+    <script src="../vue/dist/vue.js"></script>
+  </head>
+
+  <body>
+    <!-- Vue Block -->
+    <div id="app">
+      <section class="hero is-link is-bold is-fullheight">
+
+        <!--  hero header -->
+        <hero-header></hero-header>
+
+        <!--  hero body -->
+        <div class="hero-body">
+          <div class="container has-text-centered">
+          <table class="table is-narrow">
+            <tbody>
+              <tr><th>サモナー1</th></tr>
+              <tr><td>{{ summoners[0].name }} {{ summoners[0].tier }} {{ summoners[0].division }} {{ summoners[0].lp }} LP</td></tr>
+              <tr>
+                <td>
+                  <div class="field has-addons">
+                    <div class="control">
+                      <input type="text" class="input is-primary" placeholder="サモナーネームを入力" v-model="req[0]" :key="summoners[0].name">
+                    </div>
+                    <div class="control">
+                      <a class="button is-primary" v-on:click="getSummoner(0)">セット</a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr><th>サモナー3</th></tr>
+              <tr><td>{{ summoners[2].name }} {{ summoners[2].tier }} {{ summoners[2].division }} {{ summoners[2].lp }} LP</td></tr>
+              <tr>
+                <td>
+                  <div class="field has-addons">
+                    <div class="control">
+                      <input type="text" class="input is-primary" placeholder="サモナーネームを入力" v-model="req[2]" :key="summoners[2].name">
+                    </div>
+                    <div class="control">
+                      <a class="button is-primary" v-on:click="getSummoner(2)">セット</a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr><th>サモナー5</th></tr>
+              <tr>
+                <td>{{ summoners[4].name }} {{ summoners[4].tier }} {{ summoners[4].division }} {{ summoners[4].lp }} LP</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="field has-addons">
+                    <div class="control">
+                      <input type="text" class="input is-primary" placeholder="サモナーネームを入力" v-model="req[4]" :key="summoners[4].name">
+                    </div>
+                    <div class="control">
+                      <a class="button is-primary" v-on:click="getSummoner(4)">セット</a>
+                    </div>
+                  </div>
+                </td>
+                <td >
+              </tr>
+              <tr>
+                <th>サモナー7</th>
+              </tr>
+              <tr>
+                <td>{{ summoners[6].name }} {{ summoners[6].tier }} {{ summoners[6].division }} {{ summoners[6].lp }} LP</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="field has-addons">
+                    <div class="control">
+                      <input type="text" class="input is-primary" placeholder="サモナーネームを入力" v-model="req[6]" :key="summoners[6].name">
+                    </div>
+                    <div class="control">
+                      <a class="button is-primary" v-on:click="getSummoner(6)">セット</a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th>サモナー9</th>
+              </tr>
+              <tr>
+                <td>{{ summoners[8].name }} {{ summoners[8].tier }} {{ summoners[8].division }} {{ summoners[8].lp }} LP</td>
+              </tr>
+              <tr>
+                <!-- input field -->
+                <td>
+                  <div class="field has-addons">
+                    <div class="control">
+                      <input type="text" class="input is-primary" placeholder="サモナーネームを入力" v-model="req[8]" :key="summoners[8].name">
+                    </div>
+                    <div class="control">
+                      <a class="button is-primary" v-on:click="getSummoner(8)">セット</a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="container has-text-centered">
+          <table class="table is-narrow">
+            <tbody>
+              <tr><th>サモナー1</th></tr>
+              <tr><td>{{ summoners[0].name }} {{ summoners[0].tier }} {{ summoners[0].division }} {{ summoners[0].lp }} LP</td></tr>
+              <tr>
+                <td>
+                  <div class="field has-addons">
+                    <div class="control">
+                      <input type="text" class="input is-primary" placeholder="サモナーネームを入力" v-model="req[0]" :key="summoners[0].name">
+                    </div>
+                    <div class="control">
+                      <a class="button is-primary" v-on:click="getSummoner(0)">セット</a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr><th>サモナー3</th></tr>
+              <tr><td>{{ summoners[2].name }} {{ summoners[2].tier }} {{ summoners[2].division }} {{ summoners[2].lp }} LP</td></tr>
+              <tr>
+                <td>
+                  <div class="field has-addons">
+                    <div class="control">
+                      <input type="text" class="input is-primary" placeholder="サモナーネームを入力" v-model="req[2]" :key="summoners[2].name">
+                    </div>
+                    <div class="control">
+                      <a class="button is-primary" v-on:click="getSummoner(2)">セット</a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr><th>サモナー5</th></tr>
+              <tr>
+                <td>{{ summoners[4].name }} {{ summoners[4].tier }} {{ summoners[4].division }} {{ summoners[4].lp }} LP</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="field has-addons">
+                    <div class="control">
+                      <input type="text" class="input is-primary" placeholder="サモナーネームを入力" v-model="req[4]" :key="summoners[4].name">
+                    </div>
+                    <div class="control">
+                      <a class="button is-primary" v-on:click="getSummoner(4)">セット</a>
+                    </div>
+                  </div>
+                </td>
+                <td >
+              </tr>
+              <tr>
+                <th>サモナー7</th>
+              </tr>
+              <tr>
+                <td>{{ summoners[6].name }} {{ summoners[6].tier }} {{ summoners[6].division }} {{ summoners[6].lp }} LP</td>
+              </tr>
+              <tr>
+                <td>
+                  <div class="field has-addons">
+                    <div class="control">
+                      <input type="text" class="input is-primary" placeholder="サモナーネームを入力" v-model="req[6]" :key="summoners[6].name">
+                    </div>
+                    <div class="control">
+                      <a class="button is-primary" v-on:click="getSummoner(6)">セット</a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+              <tr>
+                <th>サモナー9</th>
+              </tr>
+              <tr>
+                <td>{{ summoners[8].name }} {{ summoners[8].tier }} {{ summoners[8].division }} {{ summoners[8].lp }} LP</td>
+              </tr>
+              <tr>
+                <!-- input field -->
+                <td>
+                  <div class="field has-addons">
+                    <div class="control">
+                      <input type="text" class="input is-primary" placeholder="サモナーネームを入力" v-model="req[8]" :key="summoners[8].name">
+                    </div>
+                    <div class="control">
+                      <a class="button is-primary" v-on:click="getSummoner(8)">セット</a>
+                    </div>
+                  </div>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+        </div>
+
+      <!--  hero footer -->
+        <hero-footer></hero-footer>
+      </section>
+    </div>
+
+    <!-- load own script -->
+    <script src="./js/component.js" charset="utf-8"></script>
+    <script src="./js/summoner.js" charset="utf-8"></script>
+    <script src="./js/script.js" charset="utf-8"></script>
+  </body>
+</html>

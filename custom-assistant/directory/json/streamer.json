@@ -1,0 +1,25 @@
+{
+  "streamer": [
+    {
+      "name": "",
+      "tag": [""],
+      "text": "現在作成中",
+      "link": {
+          "Twitter": "",
+          "Twitch": ""
+      }
+    }
+  ],
+
+  "pro": [
+    {
+      "name": "",
+      "tag": [""],
+      "text": "現在作成中",
+      "link": {
+          "Twitter": "",
+          "OPENREC": ""
+      }
+    }
+  ]
+}

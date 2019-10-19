@@ -1,0 +1,42 @@
+.table {
+  margin: auto;
+}
+caption {
+  margin: 30px 0;
+}
+
+#custom-table tr td{
+  text-align: center;
+  padding: 0;
+}
+#custom-table tr th{
+  text-align: center;
+  padding: 20px 0;
+}
+/* BLUE TEAM HEADER */
+#custom-table tr th:nth-child(1) {
+  background-color: #209cee;
+  height: 72px;
+}
+/* RED TEAM HEADER */
+#custom-table tr th:nth-child(4) {
+  background-color: #e74c3c;
+  height: 72px;
+}
+#custom-table tr:nth-child(11) {
+  height: 90px;
+  font-size: 30px;
+}
+#custom-table tr th.blue{
+  background-color: #209cee;
+}
+#custom-table tr th.red{
+  background-color: #e74c3c;
+}
+#custom-table tr th.rank {
+  width: 130px;
+  padding: 80px 0 0 0;
+  background-position: 50% 0;
+  background-size: contain;
+  background-repeat: no-repeat;
+}

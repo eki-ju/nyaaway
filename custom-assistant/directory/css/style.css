@@ -1,0 +1,27 @@
+.directory-body {
+  padding: 30px;
+}
+
+.section .container {
+  padding: 0 10%;
+}
+
+.section h1 {
+  margin-left: 10%;
+  font-weight: bold;
+  text-shadow: 2px 2px 1px #666666;
+}
+
+.box {
+  position: relative;
+  padding: auto 0;
+  box-shadow: 0 4px 3px rgba(10,10,10,.1), 0 0 0 1px rgba(10,10,10,.1);
+  margin: 30px;
+}
+
+
+/*
+.box:hover {
+  opacity:0.8;
+}
+*/

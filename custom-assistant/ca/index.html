@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<!--
+
+███╗   ██╗██╗   ██╗ █████╗  █████╗ ██╗    ██╗ █████╗ ██╗   ██╗
+████╗  ██║╚██╗ ██╔╝██╔══██╗██╔══██╗██║    ██║██╔══██╗╚██╗ ██╔╝
+██╔██╗ ██║ ╚████╔╝ ███████║███████║██║ █╗ ██║███████║ ╚████╔╝
+██║╚██╗██║  ╚██╔╝  ██╔══██║██╔══██║██║███╗██║██╔══██║  ╚██╔╝
+██║ ╚████║   ██║   ██║  ██║██║  ██║╚███╔███╔╝██║  ██║   ██║
+╚═╝  ╚═══╝   ╚═╝   ╚═╝  ╚═╝╚═╝  ╚═╝ ╚══╝╚══╝ ╚═╝  ╚═╝   ╚═╝
+
+   Copyright © 2018-2019 nyaaway.com.  All rights reserved.
+-->
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <title>Custom Assistant</title>
+    <link rel="stylesheet" href="../bulma/css/bulmadarkly.min.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" integrity="sha384-UHRtZLI+pbxtHCWp1t77Bi1L4ZtiqrqD80Kn4Z8NTSRyMA2Fd33n5dQ8lWUE00s/" crossorigin="anonymous">
+    <script src="../vue/dist/vue.js"></script>
+    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+    <script>
+      (adsbygoogle = window.adsbygoogle || []).push({
+        google_ad_client: "ca-pub-5884167640260067",
+        enable_page_level_ads: true
+      });
+    </script>
+  </head>
+
+  <body>
+    <!-- Vue Block -->
+    <div id="app">
+      <section class="hero is-dark is-fullheight">
+
+        <!--  hero header -->
+        <hero-header></hero-header>
+
+        <!--  hero body -->
+        <div class="hero-body">
+          <div class="container">
+            <table class="table is-bordered is-narrow" id="custom-table">
+              <caption>
+                <h1 class="title">Custom Assistant (β)</h1>
+                <h2 class="subtitle">開発中のため仕様やデザインが大幅に変更されるおそれがあります。</h2>
+              </caption>
+              <tbody>
+
+                <!-- Summoner 1, Summoner 2 -->
+                <tr>
+                  <th><span v-if="!summoners[0].name">サモナー1</span>{{ summoners[0].name }}</th>
+                  <th rowspan="2" class="rank" v-bind:style="{ 'background-image': 'url(' + rankarmor[0] + ')' }">{{ summoners[0].tier }} {{ summoners[0].division }}</th>
+                  <th rowspan="2" class="rank" v-bind:style="{ 'background-image': 'url(' + rankarmor[1] + ')' }">{{ summoners[1].tier }} {{ summoners[1].division }}</th>
+                  <th><span v-if="!summoners[1].name">サモナー2</span>{{ summoners[1].name }}</th>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="field has-addons">
+                      <div class="control has-icons-left">
+                        <input type="text" class="input is-small" placeholder="サモナーネームを入力" v-model="req[0]">
+                        <span class="icon is-small is-left"><i class="fas fa-id-card"></i></span>
+                      </div>
+                      <div class="control">
+                        <a class="button is-dark is-small" v-on:click="getSummoner(0)">セット</a>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="field has-addons">
+                      <div class="control has-icons-left">
+                        <input type="text" class="input is-small" placeholder="サモナーネームを入力" v-model="req[1]">
+                        <span class="icon is-small is-left"><i class="fas fa-id-card"></i></span>
+                      </div>
+                      <div class="control">
+                        <a class="button is-dark is-small" v-on:click="getSummoner(1)">セット</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Summoner 3, Summoner 4 -->
+                <tr>
+                  <th><span v-if="!summoners[2].name">サモナー3</span>{{ summoners[2].name }}</th>
+                  <th rowspan="2" class="rank" v-bind:style="{ 'background-image': 'url(' + rankarmor[2] + ')' }">{{ summoners[2].tier }} {{ summoners[2].division }}</th>
+                  <th rowspan="2" class="rank" v-bind:style="{ 'background-image': 'url(' + rankarmor[3] + ')' }">{{ summoners[3].tier }} {{ summoners[3].division }}</th>
+                  <th><span v-if="!summoners[3].name">サモナー4</span>{{ summoners[3].name }}</th>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="field has-addons">
+                      <div class="control has-icons-left">
+                        <input type="text" class="input is-small" placeholder="サモナーネームを入力" v-model="req[2]" :key="summoners[2].name">
+                        <span class="icon is-small is-left"><i class="fas fa-id-card"></i></span>
+                      </div>
+                      <div class="control">
+                        <a class="button is-dark is-small" v-on:click="getSummoner(2)">セット</a>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="field has-addons">
+                      <div class="control has-icons-left">
+                        <input type="text" class="input is-small" placeholder="サモナーネームを入力" v-model="req[3]" :key="summoners[3].name">
+                        <span class="icon is-small is-left"><i class="fas fa-id-card"></i></span>
+                      </div>
+                      <div class="control">
+                        <a class="button is-dark is-small" v-on:click="getSummoner(3)">セット</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Summoner 5, Summoner 6 -->
+                <tr>
+                  <th><span v-if="!summoners[4].name">サモナー5</span>{{ summoners[4].name }}</th>
+                  <th rowspan="2" class="rank" v-bind:style="{ 'background-image': 'url(' + rankarmor[4] + ')' }">{{ summoners[4].tier }} {{ summoners[4].division }}</th>
+                  <th rowspan="2" class="rank" v-bind:style="{ 'background-image': 'url(' + rankarmor[5] + ')' }">{{ summoners[5].tier }} {{ summoners[5].division }}</th>
+                  <th><span v-if="!summoners[5].name">サモナー6</span>{{ summoners[5].name }}</th>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="field has-addons">
+                      <div class="control has-icons-left">
+                        <input type="text" class="input is-small" placeholder="サモナーネームを入力" v-model="req[4]" :key="summoners[4].name">
+                        <span class="icon is-small is-left"><i class="fas fa-id-card"></i></span>
+                      </div>
+                      <div class="control">
+                        <a class="button is-dark is-small" v-on:click="getSummoner(4)">セット</a>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="field has-addons">
+                      <div class="control has-icons-left">
+                        <input type="text" class="input is-small" placeholder="サモナーネームを入力" v-model="req[5]" :key="summoners[5].name">
+                        <span class="icon is-small is-left"><i class="fas fa-id-card"></i></span>
+                      </div>
+                      <div class="control">
+                        <a class="button is-dark is-small" v-on:click="getSummoner(5)">セット</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Summoner 7, Summoner 8 -->
+                <tr>
+                  <th><span v-if="!summoners[6].name">サモナー7</span>{{ summoners[6].name }}</th>
+                  <th rowspan="2" class="rank" v-bind:style="{ 'background-image': 'url(' + rankarmor[6] + ')' }">{{ summoners[6].tier }} {{ summoners[6].division }}</th>
+                  <th rowspan="2" class="rank" v-bind:style="{ 'background-image': 'url(' + rankarmor[7] + ')' }">{{ summoners[7].tier }} {{ summoners[7].division }}</th>
+                  <th><span v-if="!summoners[7].name">サモナー8</span>{{ summoners[7].name }}</th>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="field has-addons">
+                      <div class="control has-icons-left">
+                        <input type="text" class="input is-small" placeholder="サモナーネームを入力" v-model="req[6]" :key="summoners[6].name">
+                        <span class="icon is-small is-left"><i class="fas fa-id-card"></i></span>
+                      </div>
+                      <div class="control">
+                        <a class="button is-dark is-small" v-on:click="getSummoner(6)">セット</a>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="field has-addons">
+                      <div class="control has-icons-left">
+                        <input type="text" class="input is-small" placeholder="サモナーネームを入力" v-model="req[7]" :key="summoners[7].name">
+                        <span class="icon is-small is-left"><i class="fas fa-id-card"></i></span>
+                      </div>
+                      <div class="control">
+                        <a class="button is-dark is-small" v-on:click="getSummoner(7)">セット</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- Summoner 9, Summoner 10 -->
+                <tr>
+                  <th><span v-if="!summoners[8].name">サモナー9</span>{{ summoners[8].name }}</th>
+                  <th rowspan="2" class="rank" v-bind:style="{ 'background-image': 'url(' + rankarmor[8] + ')' }">{{ summoners[8].tier }} {{ summoners[8].division }}</th>
+                  <th rowspan="2" class="rank" v-bind:style="{ 'background-image': 'url(' + rankarmor[9] + ')' }">{{ summoners[9].tier }} {{ summoners[9].division }}</th>
+                  <th><span v-if="!summoners[9].name">サモナー10</span>{{ summoners[9].name }}</th>
+                </tr>
+
+                <tr>
+                  <td>
+                    <div class="field has-addons">
+                      <div class="control has-icons-left">
+                        <input type="text" class="input is-small" placeholder="サモナーネームを入力" v-model="req[8]" :key="summoners[8].name">
+                        <span class="icon is-small is-left"><i class="fas fa-id-card"></i></span>
+                      </div>
+                      <div class="control">
+                        <a class="button is-dark is-small" v-on:click="getSummoner(8)">セット</a>
+                      </div>
+                    </div>
+                  </td>
+                  <td>
+                    <div class="field has-addons">
+                      <div class="control has-icons-left">
+                        <input type="text" class="input is-small" placeholder="サモナーネームを入力" v-model="req[9]" :key="summoners[9].name">
+                        <span class="icon is-small is-left"><i class="fas fa-id-card"></i></span>
+                      </div>
+                      <div class="control">
+                        <a class="button is-dark is-small" v-on:click="getSummoner(9)">セット</a>
+                      </div>
+                    </div>
+                  </td>
+                </tr>
+
+                <!-- blue and red MMR -->
+                <tr>
+                  <th class="blue">MMR：{{ blueMMR }}</th>
+                  <th colspan="2">VS</th>
+                  <th class="red">MMR：{{ redMMR }}</th>
+                </tr>
+              </tbody>
+            </table>
+            <!--<div class="container has-text-centered">-->
+            <div class="buttons is-centered">
+              <span class="button" v-on:click="shuffleTeam()">
+                <span class="icon"><i class="fas fa-random"></i></span>
+                <span>シャッフル</span>
+              </span>
+              <span class="button" v-on:click="divideRate()">
+                <span class="icon"><i class="fas fa-arrows-alt-h"></i></span>
+                <span>レートで分ける</span>
+              </span>
+              <span class="button" v-on:click="debugFunc()">
+                <span class="icon"><i class="fas fa-cogs"></i></span>
+                <span>デバッグ用</span>
+              </span>
+            </div>
+          </div>
+        </div>
+
+      <!--  hero footer -->
+        <hero-footer></hero-footer>
+      </section>
+    </div>
+
+    <!-- load own script -->
+    <script src="./js/component.js" charset="utf-8"></script>
+    <script src="./js/summoner.js" charset="utf-8"></script>
+    <script src="./js/script.js" charset="utf-8"></script>
+  </body>
+</html>
