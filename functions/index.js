@@ -19,7 +19,7 @@ const URL = {
 // define OPTIONS about headers
 const options = {
   method: 'GET',
-  headers: {'X-Riot-Token': 'RGAPI-fec644ee-20b1-4750-9cdb-f7c74574de86'}
+  headers: {'X-Riot-Token': '自分のRiotGamesAPIキー'}
 }
 
 // define function to send request to RiotGamesAPI
@@ -35,7 +35,7 @@ const getJSON = async (url) => {
 }
 
 
-// 1, まず9998-9999でリクエスト送る
+// 1, まず9998-9999でリクエスト送る(通算ゲーム数を知るため)
 // 2, totalGamesをhttpにsend、それをMAXとして100ずつマッチヒストリーをとる
 // 3, マッチヒストリーのmatches[index].gameIdを保存
 // 4, gameIdからGAMEDATAのparticipantIdentities[index].players.currentAccountId
